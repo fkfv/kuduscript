@@ -34,7 +34,7 @@ call npm publish --access public
 IF %ERRORLEVEL% NEQ 0 goto error
 
 echo Trying to install kuduscript from npm registry
-call npm install kuduscript -g
+call npm install @fkfv/kuduscript -g
 IF %ERRORLEVEL% NEQ 0 goto error
 
 goto end
