@@ -34,6 +34,9 @@ function addDeploymentScriptOptions(command) {
     .option('--aspNetCoreMSBuild1607 <projectFilePath>', 'Create a deployment script for ASP.NET Core web application using MSBuild16.7.0, specify the project file path') // could be project.json, xproj, csproj;
     .option('--dotNetConsoleMSBuild1607 <projectFilePath>', 'Create a deployment script for .NET console application using MSBuild16.7.0, specify the project file path')
     .option('--functionAppMSBuild1607 [projectFilePath]', 'Create a deployment script for function App using MSBuild16.7.0, specify the project file path if using msbuild')
+    .option('--aspNetCoreMSBuild17 <projectFilePath>', 'Create a deployment script for ASP.NET Core web application using MSBuild17, specify the project file path') // could be project.json, xproj, csproj;
+    .option('--dotNetConsoleMSBuild17 <projectFilePath>', 'Create a deployment script for .NET console application using MSBuild17, specify the project file path')
+    .option('--functionAppMSBuild17 [projectFilePath]', 'Create a deployment script for function App using MSBuild17, specify the project file path if using msbuild')
   }
 
 function tryOptionalInput(argument) {
@@ -68,11 +71,11 @@ function deploymentScriptExecute(name, options, log, confirm, _) {
     options.helpInformation();
     log.help('');
     log.help('Please specify one of these flags: --aspWAP, --aspNetCore, --aspWebSite, --php, --python, --dotNetConsole, ' + 
-             '--basic, --ruby, --functionApp, --node, --aspNetCoreMSBuild16, --aspNetCoreMSBuild1607, --dotNetConsoleMSBuild16, --dotNetConsoleMSBuild1607, --functionAppMSBuild1607 or --functionAppMSBuild16');
+             '--basic, --ruby, --functionApp, --node, --aspNetCoreMSBuild16, --aspNetCoreMSBuild1607, --aspNetCoreMSBuild17, --dotNetConsoleMSBuild16, --dotNetConsoleMSBuild1607, --dotNetConsoleMSBuild17, --functionAppMSBuild1607, --functionAppMSBuild17 or --functionAppMSBuild16');
     return;
   } else if (flagCount > 1) {
     throw new Error('Please specify only one of these flags: --aspWAP, --aspNetCore, --aspWebSite, --php, --python, --dotNetConsole, ' +
-                    '--basic, --ruby, --functionApp, --node, --aspNetCoreMSBuild16, --aspNetCoreMSBuild1607, --dotNetConsoleMSBuild16, --dotNetConsoleMSBuild1607, --functionAppMSBuild1607 or --functionAppMSBuild16');
+                    '--basic, --ruby, --functionApp, --node, --aspNetCoreMSBuild16, --aspNetCoreMSBuild1607, --aspNetCoreMSBuild17, --dotNetConsoleMSBuild16, --dotNetConsoleMSBuild1607, --dotNetConsoleMSBuild17, --functionAppMSBuild1607, --functionAppMSBuild17 or --functionAppMSBuild16');
   }
 
   var projectType;
@@ -84,7 +87,9 @@ function deploymentScriptExecute(name, options, log, confirm, _) {
     projectType = generator.ProjectType.aspNetCoreMSBuild16;
   } else if(options.aspNetCoreMSBuild1607){
     projectType = generator.ProjectType.aspNetCoreMSBuild1607;
-  }  else if (options.aspWebSite) {
+  } else if(options.aspNetCoreMSBuild17){
+    projectType = generator.ProjectType.aspNetCoreMSBuild17;
+  } else if (options.aspWebSite) {
     projectType = generator.ProjectType.website;
   } else if (options.go) {
     projectType = generator.ProjectType.go;
@@ -98,12 +103,16 @@ function deploymentScriptExecute(name, options, log, confirm, _) {
     projectType = generator.ProjectType.dotNetConsoleMSBuild16;
   } else if (options.dotNetConsoleMSBuild1607) {
     projectType = generator.ProjectType.dotNetConsoleMSBuild1607;
+  } else if (options.dotNetConsoleMSBuild17) {
+    projectType = generator.ProjectType.dotNetConsoleMSBuild17;
   } else if (options.functionApp) {
     projectType = generator.ProjectType.functionApp;
   } else if (options.functionAppMSBuild16) {
     projectType = generator.ProjectType.functionAppMSBuild16;
   } else if (options.functionAppMSBuild1607) {
     projectType = generator.ProjectType.functionAppMSBuild1607;
+  } else if (options.functionAppMSBuild17) {
+    projectType = generator.ProjectType.functionAppMSBuild17;
   } else if (options.ruby) {
     projectType = generator.ProjectType.ruby;
   } else if (options.php) {
