@@ -50,8 +50,9 @@ function deploymentScriptExecute(name, options, log, confirm, _) {
   var outputPath = options.outputPath || repositoryRoot;
   var scriptType = options.scriptType;
   var projectFile = options.aspWAP || options.dotNetConsole || options.aspNetCore ||
-                    options.dotNetConsoleMSBuild16 || options.aspNetCoreMSBuild16 || options.aspNetCoreMSBuild1607 ||
-                    options.dotNetConsoleMSBuild1607 || tryOptionalInput(options.functionApp) || tryOptionalInput(options.functionAppMSBuild16) || tryOptionalInput(options.functionAppMSBuild1607);
+                    options.dotNetConsoleMSBuild16 || options.aspNetCoreMSBuild16 || options.aspNetCoreMSBuild1607 || options.aspNetCoreMSBuild17 ||
+                    options.dotNetConsoleMSBuild1607 || options.dotNetConsoleMSBuild17 ||
+                    tryOptionalInput(options.functionApp) || tryOptionalInput(options.functionAppMSBuild16) || tryOptionalInput(options.functionAppMSBuild1607) || tryOptionalInput(options.functionAppMSBuild17);
   var solutionFile = options.solutionFile;
   var sitePath = options.sitePath || repositoryRoot;
   var noDotDeployment = options.dotDeployment === false;
@@ -59,7 +60,7 @@ function deploymentScriptExecute(name, options, log, confirm, _) {
 
   var exclusionFlags = [options.aspWAP, options.php, options.python, options.aspWebSite, options.node, options.ruby,
                         options.basic, options.functionApp, options.dotNetConsole, options.aspNetCore, options.go,
-                        options.functionAppMSBuild16, options.functionAppMSBuild1607, options.dotNetConsoleMSBuild16, options.dotNetConsoleMSBuild1607, options.aspNetCoreMSBuild16, options.aspNetCoreMSBuild1607] ;
+                        options.functionAppMSBuild16, options.functionAppMSBuild1607, options.functionAppMSBuild17, options.dotNetConsoleMSBuild16, options.dotNetConsoleMSBuild1607, options.dotNetConsoleMSBuild17, options.aspNetCoreMSBuild16, options.aspNetCoreMSBuild1607, options.aspNetCoreMSBuild17] ;
   var flagCount = 0;
   for (var i in exclusionFlags) {
     if (exclusionFlags[i]) {
