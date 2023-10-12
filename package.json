@@ -1,7 +1,7 @@
 {
   "name": "@fkfv/kuduscript",
   "author": "Outercurve Foundation",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "Tool for generating deployment scripts for Azure Websites",
   "tags": [
     "azure",
