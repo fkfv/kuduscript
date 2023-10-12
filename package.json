@@ -22,11 +22,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/projectkudu/kuduscript.git"
+    "url": "https://github.com/fkfv/kuduscript.git"
   },
-  "homepage": "http://github.com/projectkudu/kuduscript",
+  "homepage": "http://github.com/fkfv/kuduscript",
   "bugs": {
-    "url": "http://github.com/projectkudu/kuduscript/issues"
+    "url": "http://github.com/fkfv/kuduscript/issues"
   },
   "bin": {
     "kuduscript": "./bin/kuduscript"

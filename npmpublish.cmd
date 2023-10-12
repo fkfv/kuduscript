@@ -30,7 +30,7 @@ call npm install . -g
 IF %ERRORLEVEL% NEQ 0 goto error
 
 echo Publishing kuduscript
-call npm publish
+call npm publish --access public
 IF %ERRORLEVEL% NEQ 0 goto error
 
 echo Trying to install kuduscript from npm registry
