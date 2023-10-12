@@ -1,5 +1,5 @@
 {
-  "name": "kuduscript",
+  "name": "@fkfv/kuduscript",
   "author": "Outercurve Foundation",
   "version": "1.0.17",
   "description": "Tool for generating deployment scripts for Azure Websites",
